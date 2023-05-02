@@ -7,7 +7,6 @@ import styles from './TodoForm.module.scss';
 TodoForm.propTypes = {
     textConfirm: PropTypes.string.isRequired,
     onSetShow: PropTypes.func.isRequired,
-    onEditTodo: PropTypes.func,
     oldTodo: PropTypes.shape({
         id: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
         task: PropTypes.string.isRequired,
@@ -19,6 +18,7 @@ TodoForm.propTypes = {
 export function TodoForm({ textConfirm, onSetShow, onAddTodo, oldTodo, onEditTodo }) {
     const sharedObj = useContext(TodoContext)
     const addTodo = sharedObj.addTodo
+    const editTodo = sharedObj.editTodo 
     // State
     const [task, setTask] = useState(oldTodo?.task || '');
     const [error, setError] = useState(false);
@@ -49,7 +49,7 @@ export function TodoForm({ textConfirm, onSetShow, onAddTodo, oldTodo, onEditTod
         e.preventDefault();
         let validTask = validate(task);
         if (validTask && !oldTodo) {
-            onAddTodo?.(task);
+            addTodo?.(task);
             onSetShow(false);
         } else if (validTask && oldTodo) {
             // console.log(oldTodo.id)

@@ -3,7 +3,7 @@ import { TodoItem } from './TodoItem'
 import { useContext } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
 
-export  function TodoLists({lists, onEditTodo, onDeleteTodo}) {
+export  function TodoLists({}) {
 	// const shareObj = useContext(TodoContext)
 	// const todoFilter = sharedObj.todosFilter;
 
@@ -12,7 +12,7 @@ export  function TodoLists({lists, onEditTodo, onDeleteTodo}) {
 
   return (
 	<ul className={styles.todoList}>
-		{todosFilter?.map(item => (<TodoItem todo={item} key={item.id} onEditTodo={onEditTodo} onDeleteTodo={onDeleteTodo}/>))}
+		{todosFilter?.map(item => (<TodoItem todo={item} key={item.id}/>))}
 	</ul>
   )
 }

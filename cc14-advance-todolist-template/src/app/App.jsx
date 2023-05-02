@@ -63,9 +63,9 @@ function App() {
         <div className='container'>
             <Header onChangeSearch={handleChangeSearch} />
             <SideBar onSelect={handleSelectGenericLists} />
-            <TodoContent todos={todosFilter} setTodos={setTodos}  setTodoFilter={setTodoFilter}/>
+            <TodoContent />
         </div>
-    );
+    )
 }
 
 export default App;

@@ -1,12 +1,18 @@
 import styles from './TodoItem.module.scss';
-
-import { useState } from 'react';
+import { TodoContext } from '../../contexts/TodoContext';
+import { useState,useContext } from 'react';
 import { TodoForm } from './TodoForm';
 import { HiCheck, HiPencil, HiTrash } from 'react-icons/hi';
 import { convertDate } from '../../utils/DateUtils';
 
 
-export function TodoItem({ todo,onEditTodo, onDeleteTodo }) {
+export function TodoItem({ todo}) {
+    // Consume
+    const sharedObj = useContext(TodoContext)
+    const editTodo = sharedObj.editTodo;
+    const deleteTodo = sharedObj.deleteTodo
+
+    // state
     const [isEdit, setIsEdit] = useState(false);
 
 
@@ -14,11 +20,11 @@ export function TodoItem({ todo,onEditTodo, onDeleteTodo }) {
     const handleClickEditIcon = () => setIsEdit(true);
 
    const handleClickCheckBox = () => {
-    onEditTodo(todo.id, { ...todo,status  : !todo.status})
+    editTodo(todo.id, { ...todo,status  : !todo.status})
    }
 
    const handleClickDeleteBox = () => {
-    onDeleteTodo(todo.id)
+    deleteTodo(todo.id)
    }
 
     
@@ -44,9 +50,7 @@ export function TodoItem({ todo,onEditTodo, onDeleteTodo }) {
                 textConfirm="Edit task"
                 onSetShow={setIsEdit}
                 oldTodo={todo} 
-                onEditTodo={onEditTodo}
-                
-                
+        
                 />
             )}
         </>
