@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    // margin-bottom: 10px;
+    // for sticky
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    // move old lay-out to header__status__bar
+    &__status__bar {
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+        & > h1 {
+            font-size: 24px;
+        }
+        & > span {
+            font-size: 12px;
+            color: grey;
+        }
+    }
+
+    &__control__bar {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+.control__bar {
+    &__icon {
+        display: flex;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}

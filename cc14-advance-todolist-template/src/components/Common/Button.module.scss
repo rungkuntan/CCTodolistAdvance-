@@ -1,0 +1,17 @@
+.btn {
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    flex: 1;
+
+    &__primary {
+        background-color: #db4c3f;
+        color: white;
+    }
+
+    &__secondary {
+        background-color: rgb(220, 220, 220);
+        color: black;
+    }
+}
